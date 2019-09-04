@@ -6,7 +6,7 @@ namespace Topshelf.Nancy.Sample
     {
         public SampleNancyModule()
         {
-            Get["/status"] = _ => "I am alive!";
+            Get("/status", _ => "I am alive!");
         }
     }
 }

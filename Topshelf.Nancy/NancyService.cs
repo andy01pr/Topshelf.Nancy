@@ -20,10 +20,7 @@ namespace Topshelf.Nancy
         {
             var nancyHostConfiguration = new HostConfiguration();
 
-            if (nancyServiceConfiguration.NancyHostConfigurator != null)
-            {
-              nancyServiceConfiguration.NancyHostConfigurator(nancyHostConfiguration);
-            }
+            nancyServiceConfiguration.NancyHostConfigurator?.Invoke(nancyHostConfiguration);
 
             NancyServiceConfiguration = nancyServiceConfiguration;
             NancyHostConfiguration = nancyHostConfiguration;

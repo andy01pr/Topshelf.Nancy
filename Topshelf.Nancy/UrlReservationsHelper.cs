@@ -133,7 +133,6 @@ namespace Topshelf.Nancy
                 if (baseUri.IsDefaultPort)
                 {
                     prefix = prefix.Replace(baseUri.Host, string.Format("{0}:{1}", baseUri.Host, baseUri.Port));
-
                 }
 
                 if (_nancyHostConfiguration.RewriteLocalhost && !baseUri.Host.Contains("."))

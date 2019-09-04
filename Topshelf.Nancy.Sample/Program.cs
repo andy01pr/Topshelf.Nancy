@@ -2,17 +2,17 @@
 
 namespace Topshelf.Nancy.Sample
 {
-    class Program
+    internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             var host = HostFactory.New(x =>
             {
                 x.UseNLog();
-                
+
                 x.Service<SampleService>(s =>
                 {
-                    s.ConstructUsing(settings => new SampleService());
+                    s.ConstructUsing(_ => new SampleService());
                     s.WhenStarted(service => service.Start());
                     s.WhenStopped(service => service.Stop());
                     s.WithNancyEndpoint(x, c =>

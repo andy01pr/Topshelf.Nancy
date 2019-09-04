@@ -6,14 +6,15 @@ namespace Topshelf.Nancy
     {
         public static bool RunElevated(string file, string args, out string output)
         {
-            var process = CreateProcess(args, file);
+            using (var process = CreateProcess(args, file))
+            {
+                process.Start();
+                process.WaitForExit();
 
-            process.Start();
-            process.WaitForExit();
+                output = process.StandardOutput.ReadToEnd();
 
-            output = process.StandardOutput.ReadToEnd();
-
-            return process.ExitCode == 0;
+                return process.ExitCode == 0;
+            }
         }
 
         private static Process CreateProcess(string args, string file)

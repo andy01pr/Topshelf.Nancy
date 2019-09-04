@@ -16,11 +16,11 @@ namespace Topshelf.Nancy
 
             nancyService.Configure(nancyServiceConfiguration);
 
-            configurator.AfterStartingService(t => nancyService.Start());
+            configurator.AfterStartingService(_ => nancyService.Start());
 
-            configurator.BeforeStoppingService(t => nancyService.Stop());
+            configurator.BeforeStoppingService(_ => nancyService.Stop());
 
-            hostconfigurator.BeforeInstall(x => nancyService.BeforeInstall());
+            hostconfigurator.BeforeInstall(_ => nancyService.BeforeInstall());
 
             hostconfigurator.BeforeUninstall(nancyService.BeforeUninstall);
 
